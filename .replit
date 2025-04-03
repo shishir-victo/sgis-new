@@ -27,11 +27,11 @@ task = "packager.installForAll"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "pip install flask flask-cors numpy && python app.py"
+args = "pip install flask flask-cors pymysql sqlalchemy numpy && python app.py"
 waitForPort = 5000
 
 [deployment]
-run = ["sh", "-c", "pip install flask flask-cors numpy && python app.py"]
+run = ["sh", "-c", "pip install flask flask-cors pymysql sqlalchemy numpy && python app.py"]
 
 [[ports]]
 localPort = 5000

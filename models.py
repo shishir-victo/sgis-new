@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 # Database models for the Attendance System
 import os
-import json
 import time
+import json
+import logging
 from datetime import datetime
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # File paths for data storage
 DATA_DIR = 'data'
@@ -20,6 +25,8 @@ def init_db():
         if not os.path.exists(file_path):
             with open(file_path, 'w') as f:
                 json.dump([], f)
+    
+    logger.info("File-based storage initialized")
 
 class Student:
     @staticmethod
