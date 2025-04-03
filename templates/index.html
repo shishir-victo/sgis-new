@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance System API</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Student Attendance System API</h1>
+        </header>
+        
+        <section class="api-info">
+            <h2>API Endpoints</h2>
+            
+            <div class="endpoint">
+                <h3>GET /api/students</h3>
+                <p>Get a list of all students</p>
+            </div>
+            
+            <div class="endpoint">
+                <h3>POST /api/students</h3>
+                <p>Add a new student with photo</p>
+                <pre>
+{
+    "name": "Student Name",
+    "student_id": "S12345",
+    "class_id": "C12345",
+    "photo": "base64_encoded_image"
+}
+                </pre>
+            </div>
+            
+            <div class="endpoint">
+                <h3>GET /api/classes</h3>
+                <p>Get a list of all classes</p>
+            </div>
+            
+            <div class="endpoint">
+                <h3>POST /api/classes</h3>
+                <p>Add a new class</p>
+                <pre>
+{
+    "name": "Class Name"
+}
+                </pre>
+            </div>
+            
+            <div class="endpoint">
+                <h3>POST /api/take_attendance</h3>
+                <p>Process classroom photo and mark attendance</p>
+                <pre>
+{
+    "class_id": "C12345",
+    "date": "2023-07-01",
+    "photo": "base64_encoded_image"
+}
+                </pre>
+            </div>
+            
+            <div class="endpoint">
+                <h3>POST /api/manual_attendance</h3>
+                <p>Manually mark attendance for a student</p>
+                <pre>
+{
+    "student_id": "S12345",
+    "class_id": "C12345",
+    "date": "2023-07-01",
+    "status": true
+}
+                </pre>
+            </div>
+            
+            <div class="endpoint">
+                <h3>GET /api/attendance_report</h3>
+                <p>Get attendance report for a class on a specific date</p>
+                <p>Query parameters: <code>class_id</code>, <code>date</code></p>
+            </div>
+            
+            <div class="endpoint">
+                <h3>GET /api/student_attendance_report</h3>
+                <p>Get attendance report for a specific student</p>
+                <p>Query parameters: <code>student_id</code></p>
+            </div>
+        </section>
+        
+        <section class="api-test">
+            <h2>API Test</h2>
+            
+            <div class="test-form">
+                <h3>Test API Call</h3>
+                <form id="api-test-form">
+                    <div class="form-group">
+                        <label for="endpoint">Endpoint</label>
+                        <select id="endpoint" name="endpoint">
+                            <option value="/api/students">GET /api/students</option>
+                            <option value="/api/classes">GET /api/classes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit">Send Request</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="test-result">
+                <h3>Response</h3>
+                <pre id="response"></pre>
+            </div>
+        </section>
+    </div>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
